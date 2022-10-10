@@ -1,4 +1,4 @@
-Grading at Mon 10 Oct 2022 01:56:07 AM UTC
+Grading at Mon 10 Oct 2022 02:35:07 AM UTC
 Checking code1.c for legal syntax
 Checking for int max (int num1, int num2)
 Found on line 3, column 1 
