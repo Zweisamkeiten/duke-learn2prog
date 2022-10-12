@@ -16,3 +16,6 @@ Ah 9s 8d 2h 2c 0s 5h; Ah 9s 8d 3h 3c 0s 5h
 2h 2c Ah Ac 7c 0s 9s; 2h 2c Ah Ac 7c 0h 9c
 8c 8d 9c 9d 0c 0d 0h; 8c 8d 9c 9d 0c 9h 0s
 2s 2d 4s 4d 5d 5h 9h; 2s 2d 4s 4d 5d 5s 9c
+3s 3h 3d 9s 9h 8s 8h; 3s 3h 3c 9s 0h 8s 8h
+3s 4s 5h 6s 7s 5s 0h; 3s 4s 5h 6s 7s 0d Kh
+0d 0h 0c 9h 8h 7h 6h; 0d 0h 0c 9h 8h 7c 6c
