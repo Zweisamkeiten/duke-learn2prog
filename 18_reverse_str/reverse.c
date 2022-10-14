@@ -4,7 +4,7 @@
 
 void reverse(char * str) {
     char * p = str, *q = str;
-    if (*p == '\0') return;
+    if (p == NULL || *p == '\0') return;
     while (*q != '\0') ++q;
     --q;
     while (p <= q) {
