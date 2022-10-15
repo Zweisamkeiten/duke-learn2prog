@@ -61,7 +61,7 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
         if (straight_cur->value - (*(hand->cards+i))->value == 1) {
             // fs 需要比较花色
             if (fs != NUM_SUITS) {
-                if ((*(hand->cards+i+1))->suit != fs || straight_cur->suit != fs) break;
+                if ((*(hand->cards+i))->suit != fs || straight_cur->suit != fs) break;
                 else straight_counts++;
             }
             else straight_counts++;
