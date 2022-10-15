@@ -1,4 +1,4 @@
-Grading at Sat 15 Oct 2022 05:01:25 PM UTC
+Grading at Sat 15 Oct 2022 05:10:41 PM UTC
 Compiling your code
 rm -f test poker cards.o my-test-main.o *~
 cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o deck.o deck.c
@@ -328,8 +328,7 @@ Hand 1 wins!						      |	Hand 2 wins!
 ============================					============================
 Testcase 5: Trying hands with straights
  Checking the output 
-Line_129_did_not_match
-Line_132_did_not_match
+Line_134_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
 Hand 1:								Hand 1:
@@ -456,73 +455,73 @@ Hand 2:								Hand 2:
 --------							--------
 Jh 0s 9c 8s 7c 6c 5d 						Jh 0s 9c 8s 7c 6c 5d 
  - No flush							 - No flush
- - Straight at index 0					      <
- - Straight at index 1					      <
+ - Straight at index 0						 - Straight at index 0
+ - Straight at index 1						 - Straight at index 1
  - Straight at index 2						 - Straight at index 2
  - The most of a kind is 1 of a kind (at index 0 / value J)	 - The most of a kind is 1 of a kind (at index 0 / value J)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: STRAIGHT				 - evaluate_hand's ranking: STRAIGHT
- - 5 cards used for hand: Jh 0s 9c 8s 7c 		      |	 - 5 cards used for hand: 9c 8s 7c 6c 5d 
+ - 5 cards used for hand: Jh 0s 9c 8s 7c 			 - 5 cards used for hand: Jh 0s 9c 8s 7c 
 Comparison : 							Comparison : 
 --------------							--------------
 Tie							      |	Hand 2 wins!
 ============================					============================
 Testcase 6: Trying hands with flushes
 Valgrind returned an error status
-==1632== Memcheck, a memory error detector
-==1632== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==1632== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==1632== Command: ./test-eval inp.6.txt
-==1632== Parent PID: 1631
-==1632== 
-==1632== Invalid read of size 8
-==1632==    at 0x109F5B: is_n_length_straight_at (eval.c:64)
-==1632==    by 0x10A076: is_ace_low_straight_at (eval.c:90)
-==1632==    by 0x10A0F7: is_straight_at (eval.c:97)
-==1632==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1632==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1632==  Address 0x4a579b0 is 0 bytes after a block of size 48 alloc'd
-==1632==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1632==    by 0x10980C: add_card_to (in /graderhome/work/c3prj2_eval/test-eval)
-==1632==    by 0x10BAFD: hand_from_string (in /graderhome/work/c3prj2_eval/test-eval)
-==1632==    by 0x10B204: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1632== 
-==1632== Invalid read of size 4
-==1632==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
-==1632==    by 0x10A076: is_ace_low_straight_at (eval.c:90)
-==1632==    by 0x10A0F7: is_straight_at (eval.c:97)
-==1632==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1632==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1632==  Address 0x4 is not stack'd, malloc'd or (recently) free'd
-==1632== 
-==1632== 
-==1632== Process terminating with default action of signal 11 (SIGSEGV): dumping core
-==1632==  Access not within mapped region at address 0x4
-==1632==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
-==1632==    by 0x10A076: is_ace_low_straight_at (eval.c:90)
-==1632==    by 0x10A0F7: is_straight_at (eval.c:97)
-==1632==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1632==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1632==  If you believe this happened as a result of a stack
-==1632==  overflow in your program's main thread (unlikely but
-==1632==  possible), you can try to increase the size of the
-==1632==  main thread stack using the --main-stacksize= flag.
-==1632==  The main thread stack size used in this run was 8388608.
-==1632== 
-==1632== HEAP SUMMARY:
-==1632==     in use at exit: 816 bytes in 18 blocks
-==1632==   total heap usage: 752 allocs, 734 frees, 24,024 bytes allocated
-==1632== 
-==1632== LEAK SUMMARY:
-==1632==    definitely lost: 0 bytes in 0 blocks
-==1632==    indirectly lost: 0 bytes in 0 blocks
-==1632==      possibly lost: 0 bytes in 0 blocks
-==1632==    still reachable: 816 bytes in 18 blocks
-==1632==         suppressed: 0 bytes in 0 blocks
-==1632== Rerun with --leak-check=full to see details of leaked memory
-==1632== 
-==1632== For lists of detected and suppressed errors, rerun with: -s
-==1632== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==1854== Memcheck, a memory error detector
+==1854== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1854== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==1854== Command: ./test-eval inp.6.txt
+==1854== Parent PID: 1853
+==1854== 
+==1854== Invalid read of size 8
+==1854==    at 0x109F5B: is_n_length_straight_at (eval.c:64)
+==1854==    by 0x10A076: is_ace_low_straight_at (eval.c:90)
+==1854==    by 0x10A0F7: is_straight_at (eval.c:97)
+==1854==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1854==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1854==  Address 0x4a579b0 is 0 bytes after a block of size 48 alloc'd
+==1854==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1854==    by 0x10980C: add_card_to (in /graderhome/work/c3prj2_eval/test-eval)
+==1854==    by 0x10BAFD: hand_from_string (in /graderhome/work/c3prj2_eval/test-eval)
+==1854==    by 0x10B204: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1854== 
+==1854== Invalid read of size 4
+==1854==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
+==1854==    by 0x10A076: is_ace_low_straight_at (eval.c:90)
+==1854==    by 0x10A0F7: is_straight_at (eval.c:97)
+==1854==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1854==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1854==  Address 0x4 is not stack'd, malloc'd or (recently) free'd
+==1854== 
+==1854== 
+==1854== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1854==  Access not within mapped region at address 0x4
+==1854==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
+==1854==    by 0x10A076: is_ace_low_straight_at (eval.c:90)
+==1854==    by 0x10A0F7: is_straight_at (eval.c:97)
+==1854==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1854==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1854==  If you believe this happened as a result of a stack
+==1854==  overflow in your program's main thread (unlikely but
+==1854==  possible), you can try to increase the size of the
+==1854==  main thread stack using the --main-stacksize= flag.
+==1854==  The main thread stack size used in this run was 8388608.
+==1854== 
+==1854== HEAP SUMMARY:
+==1854==     in use at exit: 816 bytes in 18 blocks
+==1854==   total heap usage: 752 allocs, 734 frees, 24,024 bytes allocated
+==1854== 
+==1854== LEAK SUMMARY:
+==1854==    definitely lost: 0 bytes in 0 blocks
+==1854==    indirectly lost: 0 bytes in 0 blocks
+==1854==      possibly lost: 0 bytes in 0 blocks
+==1854==    still reachable: 816 bytes in 18 blocks
+==1854==         suppressed: 0 bytes in 0 blocks
+==1854== Rerun with --leak-check=full to see details of leaked memory
+==1854== 
+==1854== For lists of detected and suppressed errors, rerun with: -s
+==1854== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 Testcase 7: Trying hands with full houses
  Checking the output 
 Your file matched the expected output
@@ -654,109 +653,109 @@ Hand 1 wins!							Hand 1 wins!
 ============================					============================
 Testcase 9: Trying hands with straight flushes
 Valgrind returned an error status
-==1662== Memcheck, a memory error detector
-==1662== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==1662== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==1662== Command: ./test-eval inp.9.txt
-==1662== Parent PID: 1661
-==1662== 
-==1662== Invalid read of size 8
-==1662==    at 0x109F5B: is_n_length_straight_at (eval.c:64)
-==1662==    by 0x10A0D4: is_straight_at (eval.c:96)
-==1662==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1662==    by 0x10B278: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1662==  Address 0x4a45878 is 0 bytes after a block of size 40 alloc'd
-==1662==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1662==    by 0x10980C: add_card_to (in /graderhome/work/c3prj2_eval/test-eval)
-==1662==    by 0x10BAFD: hand_from_string (in /graderhome/work/c3prj2_eval/test-eval)
-==1662==    by 0x10B1EF: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1662== 
-==1662== Invalid read of size 4
-==1662==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
-==1662==    by 0x10A0D4: is_straight_at (eval.c:96)
-==1662==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1662==    by 0x10B278: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1662==  Address 0x4 is not stack'd, malloc'd or (recently) free'd
-==1662== 
-==1662== 
-==1662== Process terminating with default action of signal 11 (SIGSEGV): dumping core
-==1662==  Access not within mapped region at address 0x4
-==1662==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
-==1662==    by 0x10A0D4: is_straight_at (eval.c:96)
-==1662==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1662==    by 0x10B278: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1662==  If you believe this happened as a result of a stack
-==1662==  overflow in your program's main thread (unlikely but
-==1662==  possible), you can try to increase the size of the
-==1662==  main thread stack using the --main-stacksize= flag.
-==1662==  The main thread stack size used in this run was 8388608.
-==1662== 
-==1662== HEAP SUMMARY:
-==1662==     in use at exit: 784 bytes in 16 blocks
-==1662==   total heap usage: 26 allocs, 10 frees, 9,648 bytes allocated
-==1662== 
-==1662== LEAK SUMMARY:
-==1662==    definitely lost: 0 bytes in 0 blocks
-==1662==    indirectly lost: 0 bytes in 0 blocks
-==1662==      possibly lost: 0 bytes in 0 blocks
-==1662==    still reachable: 784 bytes in 16 blocks
-==1662==         suppressed: 0 bytes in 0 blocks
-==1662== Rerun with --leak-check=full to see details of leaked memory
-==1662== 
-==1662== For lists of detected and suppressed errors, rerun with: -s
-==1662== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==1884== Memcheck, a memory error detector
+==1884== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1884== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==1884== Command: ./test-eval inp.9.txt
+==1884== Parent PID: 1883
+==1884== 
+==1884== Invalid read of size 8
+==1884==    at 0x109F5B: is_n_length_straight_at (eval.c:64)
+==1884==    by 0x10A0D4: is_straight_at (eval.c:96)
+==1884==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1884==    by 0x10B278: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1884==  Address 0x4a45878 is 0 bytes after a block of size 40 alloc'd
+==1884==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1884==    by 0x10980C: add_card_to (in /graderhome/work/c3prj2_eval/test-eval)
+==1884==    by 0x10BAFD: hand_from_string (in /graderhome/work/c3prj2_eval/test-eval)
+==1884==    by 0x10B1EF: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1884== 
+==1884== Invalid read of size 4
+==1884==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
+==1884==    by 0x10A0D4: is_straight_at (eval.c:96)
+==1884==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1884==    by 0x10B278: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1884==  Address 0x4 is not stack'd, malloc'd or (recently) free'd
+==1884== 
+==1884== 
+==1884== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1884==  Access not within mapped region at address 0x4
+==1884==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
+==1884==    by 0x10A0D4: is_straight_at (eval.c:96)
+==1884==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1884==    by 0x10B278: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1884==  If you believe this happened as a result of a stack
+==1884==  overflow in your program's main thread (unlikely but
+==1884==  possible), you can try to increase the size of the
+==1884==  main thread stack using the --main-stacksize= flag.
+==1884==  The main thread stack size used in this run was 8388608.
+==1884== 
+==1884== HEAP SUMMARY:
+==1884==     in use at exit: 784 bytes in 16 blocks
+==1884==   total heap usage: 26 allocs, 10 frees, 9,648 bytes allocated
+==1884== 
+==1884== LEAK SUMMARY:
+==1884==    definitely lost: 0 bytes in 0 blocks
+==1884==    indirectly lost: 0 bytes in 0 blocks
+==1884==      possibly lost: 0 bytes in 0 blocks
+==1884==    still reachable: 784 bytes in 16 blocks
+==1884==         suppressed: 0 bytes in 0 blocks
+==1884== Rerun with --leak-check=full to see details of leaked memory
+==1884== 
+==1884== For lists of detected and suppressed errors, rerun with: -s
+==1884== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 Testcase 10: Trying each type of hand ranking
 Valgrind returned an error status
-==1667== Memcheck, a memory error detector
-==1667== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==1667== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==1667== Command: ./test-eval inp.10.txt
-==1667== Parent PID: 1666
-==1667== 
-==1667== Invalid read of size 8
-==1667==    at 0x109F5B: is_n_length_straight_at (eval.c:64)
-==1667==    by 0x10A111: is_straight_at (eval.c:99)
-==1667==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1667==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1667==  Address 0x4a4d548 is 0 bytes after a block of size 40 alloc'd
-==1667==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1667==    by 0x10980C: add_card_to (in /graderhome/work/c3prj2_eval/test-eval)
-==1667==    by 0x10BAFD: hand_from_string (in /graderhome/work/c3prj2_eval/test-eval)
-==1667==    by 0x10B204: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1667== 
-==1667== Invalid read of size 4
-==1667==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
-==1667==    by 0x10A111: is_straight_at (eval.c:99)
-==1667==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1667==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1667==  Address 0x4 is not stack'd, malloc'd or (recently) free'd
-==1667== 
-==1667== 
-==1667== Process terminating with default action of signal 11 (SIGSEGV): dumping core
-==1667==  Access not within mapped region at address 0x4
-==1667==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
-==1667==    by 0x10A111: is_straight_at (eval.c:99)
-==1667==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
-==1667==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
-==1667==  If you believe this happened as a result of a stack
-==1667==  overflow in your program's main thread (unlikely but
-==1667==  possible), you can try to increase the size of the
-==1667==  main thread stack using the --main-stacksize= flag.
-==1667==  The main thread stack size used in this run was 8388608.
-==1667== 
-==1667== HEAP SUMMARY:
-==1667==     in use at exit: 800 bytes in 17 blocks
-==1667==   total heap usage: 262 allocs, 245 frees, 16,104 bytes allocated
-==1667== 
-==1667== LEAK SUMMARY:
-==1667==    definitely lost: 0 bytes in 0 blocks
-==1667==    indirectly lost: 0 bytes in 0 blocks
-==1667==      possibly lost: 0 bytes in 0 blocks
-==1667==    still reachable: 800 bytes in 17 blocks
-==1667==         suppressed: 0 bytes in 0 blocks
-==1667== Rerun with --leak-check=full to see details of leaked memory
-==1667== 
-==1667== For lists of detected and suppressed errors, rerun with: -s
-==1667== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==1889== Memcheck, a memory error detector
+==1889== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1889== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==1889== Command: ./test-eval inp.10.txt
+==1889== Parent PID: 1888
+==1889== 
+==1889== Invalid read of size 8
+==1889==    at 0x109F5B: is_n_length_straight_at (eval.c:64)
+==1889==    by 0x10A111: is_straight_at (eval.c:99)
+==1889==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1889==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1889==  Address 0x4a4d548 is 0 bytes after a block of size 40 alloc'd
+==1889==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1889==    by 0x10980C: add_card_to (in /graderhome/work/c3prj2_eval/test-eval)
+==1889==    by 0x10BAFD: hand_from_string (in /graderhome/work/c3prj2_eval/test-eval)
+==1889==    by 0x10B204: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1889== 
+==1889== Invalid read of size 4
+==1889==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
+==1889==    by 0x10A111: is_straight_at (eval.c:99)
+==1889==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1889==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1889==  Address 0x4 is not stack'd, malloc'd or (recently) free'd
+==1889== 
+==1889== 
+==1889== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1889==  Access not within mapped region at address 0x4
+==1889==    at 0x109F5E: is_n_length_straight_at (eval.c:64)
+==1889==    by 0x10A111: is_straight_at (eval.c:99)
+==1889==    by 0x10AE6F: describe_hand (in /graderhome/work/c3prj2_eval/test-eval)
+==1889==    by 0x10B29C: main (in /graderhome/work/c3prj2_eval/test-eval)
+==1889==  If you believe this happened as a result of a stack
+==1889==  overflow in your program's main thread (unlikely but
+==1889==  possible), you can try to increase the size of the
+==1889==  main thread stack using the --main-stacksize= flag.
+==1889==  The main thread stack size used in this run was 8388608.
+==1889== 
+==1889== HEAP SUMMARY:
+==1889==     in use at exit: 800 bytes in 17 blocks
+==1889==   total heap usage: 262 allocs, 245 frees, 16,104 bytes allocated
+==1889== 
+==1889== LEAK SUMMARY:
+==1889==    definitely lost: 0 bytes in 0 blocks
+==1889==    indirectly lost: 0 bytes in 0 blocks
+==1889==      possibly lost: 0 bytes in 0 blocks
+==1889==    still reachable: 800 bytes in 17 blocks
+==1889==         suppressed: 0 bytes in 0 blocks
+==1889== Rerun with --leak-check=full to see details of leaked memory
+==1889== 
+==1889== For lists of detected and suppressed errors, rerun with: -s
+==1889== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 
 Overall Grade: F
