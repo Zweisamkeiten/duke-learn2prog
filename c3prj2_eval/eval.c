@@ -127,6 +127,12 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
       value_compare = hand1_eval.cards[i]->value - hand2_eval.cards[i]->value;
       break;
     }
+    else {
+      if (hand1_eval.cards[i]->suit != hand2_eval.cards[i]->suit) {
+        value_compare = hand1_eval.cards[i]->suit - hand2_eval.cards[i]->suit;
+        break;
+      }
+    }
   }
   return value_compare;
 }
