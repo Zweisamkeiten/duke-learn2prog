@@ -20,7 +20,7 @@ suit_t flush_suit(deck_t * hand) {
     }
 
     for (int i = 0; i < NUM_SUITS; ++i) {
-        if (suit_times[i] == 5) return i;
+        if (suit_times[i] >= 5) return i;
     }
     return NUM_SUITS;
 }
