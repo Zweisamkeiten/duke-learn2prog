@@ -118,7 +118,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   hand_eval_t hand1_eval = evaluate_hand(hand1);
   hand_eval_t hand2_eval = evaluate_hand(hand2);
-  return hand1_eval.ranking - hand2_eval.ranking;
+  return hand2_eval.ranking - hand1_eval.ranking;
 }
 
 
