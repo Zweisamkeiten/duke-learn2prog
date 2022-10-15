@@ -75,7 +75,7 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
         else break;
     }
 
-    if (straight_counts == n) return 1;
+    if (straight_counts >= n) return 1;
     return 0;
 }
 
