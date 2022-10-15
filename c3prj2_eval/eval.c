@@ -1,32 +1,102 @@
+// clang-format off
 #include "eval.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  return 0;
+    const card_t * const * cp1 = vp1;
+    const card_t * const * cp2 = vp2;
+    if ((*cp1)->value == (*cp2)->value) {
+        return (*cp1)->suit-(*cp2)->suit;
+    }
+    return (*cp1)->value-(*cp2)->value;
 }
 
 suit_t flush_suit(deck_t * hand) {
-  return NUM_SUITS;
+    int suit_times[] = {0, 0, 0, 0};
+    for (int i = 0; i < hand->n_cards; ++i) {
+        suit_times[(*(hand->cards+i))->suit] += 1;
+    }
+
+    for (int i = 0; i < NUM_SUITS; ++i) {
+        if (suit_times[i] == 5) return i;
+    }
+    return NUM_SUITS;
 }
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
-  return 0;
+    unsigned largest_element = arr[0];
+    for (size_t i = 1; i < n; ++i) {
+        if (arr[i] > largest_element) {
+            largest_element = arr[i];
+        }
+    }
+    return largest_element;
 }
 
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
-
-  return 0;
+    for (size_t i = 0; i < n; ++i) {
+        if (match_counts[i] == n_of_akind) return i;
+    }
+    return 0;
 }
+
 ssize_t  find_secondary_pair(deck_t * hand,
-			     unsigned * match_counts,
-			     size_t match_idx) {
-  return -1;
+                             unsigned * match_counts,
+                             size_t match_idx) {
+    for (size_t i = 0; i < hand->n_cards; ++i) {
+        if (match_counts[i] > 1 && (*(hand->cards+i))->value != (*(hand->cards+match_idx))->value) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
+    size_t straight_counts = 1;
+    card_t * straight_cur = *(hand->cards + index);
+    for (size_t i = index + 1; i < hand->n_cards; ++i) {
+        // value2 -value1 = 1;
+        if (straight_cur->value - (*(hand->cards+i))->value  == 1) {
+            // fs 需要比较花色
+            if (fs != NUM_SUITS) {
+                if ((*(hand->cards+i+1))->suit != fs || straight_cur->suit != fs) break;
+                else straight_counts++;
+            }
+            else straight_counts++;
+            straight_cur = *(hand->cards + i);
+            // 已经满足 n 长度的顺子 但后面还能继续
+            if (straight_counts > n) break;
+        }
+        else if ((*(hand->cards+i))->value == straight_cur->value) {
+            continue;
+        }
+        else break;
+    }
+
+    if (straight_counts == n) return 1;
+    return 0;
+}
+
+int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
+  size_t index_at = index;
+  for (size_t i = index; i < hand->n_cards; i++) {
+    if ((*(hand->cards+i))->value == 5) {
+      index_at = i;
+      break;
+    }
+  }
+  if (is_n_length_straight_at(hand, index_at, fs, n - 1) == 1) return -1;
+  return 0;
 }
 
 int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
-  return 0;
+  if ((*(hand->cards+index))->value == VALUE_ACE) {
+    if(is_n_length_straight_at(hand, index, fs, 5)) return 1;
+    else return is_ace_low_straight_at(hand, index, fs, 5);
+  }
+  else return is_n_length_straight_at(hand, index, fs, 5);
 }
 
 hand_eval_t build_hand_from_match(deck_t * hand,
@@ -35,13 +105,20 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  size_t idx) {
 
   hand_eval_t ans;
+  ans.ranking = what;
+  for (size_t i = 0; i < 5; i++) {
+    if (i < n) *(ans.cards+i) = *(hand->cards+i+idx);
+    else if (i - n < idx) *(ans.cards+i) = *(hand->cards+i-n);
+    else *(ans.cards+i) = *(hand->cards+i);
+  }
   return ans;
 }
 
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
-
-  return 0;
+  hand_eval_t hand1_eval = evaluate_hand(hand1);
+  hand_eval_t hand2_eval = evaluate_hand(hand2);
+  return hand1_eval.ranking - hand2_eval.ranking;
 }
 
 
@@ -186,3 +263,4 @@ hand_eval_t evaluate_hand(deck_t * hand) {
   }
   return build_hand_from_match(hand, 0, NOTHING, 0);
 }
+// clang-format on
