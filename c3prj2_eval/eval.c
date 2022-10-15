@@ -87,6 +87,7 @@ int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
       break;
     }
   }
+  if (index_at == index) return 0;
   if (is_n_length_straight_at(hand, index_at, fs, n - 1) == 1) return -1;
   return 0;
 }
@@ -126,12 +127,6 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
     if (hand1_eval.cards[i]->value != hand2_eval.cards[i]->value) {
       value_compare = hand1_eval.cards[i]->value - hand2_eval.cards[i]->value;
       break;
-    }
-    else {
-      if (hand1_eval.cards[i]->suit != hand2_eval.cards[i]->suit) {
-        value_compare = hand1_eval.cards[i]->suit - hand2_eval.cards[i]->suit;
-        break;
-      }
     }
   }
   return value_compare;
