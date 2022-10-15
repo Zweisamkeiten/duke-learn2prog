@@ -8,9 +8,9 @@ int card_ptr_comp(const void * vp1, const void * vp2) {
     const card_t * const * cp1 = vp1;
     const card_t * const * cp2 = vp2;
     if ((*cp1)->value == (*cp2)->value) {
-        return (*cp1)->suit-(*cp2)->suit;
+        return (*cp2)->suit-(*cp1)->suit;
     }
-    return (*cp1)->value-(*cp2)->value;
+    return (*cp2)->value-(*cp1)->value;
 }
 
 suit_t flush_suit(deck_t * hand) {
@@ -58,7 +58,7 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
     card_t * straight_cur = *(hand->cards + index);
     for (size_t i = index + 1; i < hand->n_cards; ++i) {
         // value2 -value1 = 1;
-        if (straight_cur->value - (*(hand->cards+i))->value  == 1) {
+        if (straight_cur->value - (*(hand->cards+i))->value == 1) {
             // fs 需要比较花色
             if (fs != NUM_SUITS) {
                 if ((*(hand->cards+i+1))->suit != fs || straight_cur->suit != fs) break;
