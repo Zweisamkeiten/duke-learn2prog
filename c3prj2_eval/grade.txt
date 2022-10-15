@@ -1,4 +1,4 @@
-Grading at Sat 15 Oct 2022 05:32:40 PM UTC
+Grading at Sat 15 Oct 2022 05:48:08 PM UTC
 Compiling your code
 rm -f test poker cards.o my-test-main.o *~
 cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o deck.o deck.c
@@ -904,8 +904,6 @@ Hand 1 wins!							Hand 1 wins!
 ============================					============================
 Testcase 9: Trying hands with straight flushes
  Checking the output 
-Line_54_did_not_match
-Line_57_did_not_match
 Line_94_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
@@ -962,10 +960,10 @@ Hand 1:								Hand 1:
 Ac As Kc Ks Qs Js 0s 						Ac As Kc Ks Qs Js 0s 
  - Flush in suit s						 - Flush in suit s
  - Straight at index 0						 - Straight at index 0
- - Straight flush at index 1				      |	 - Straight at index 1
+ - Straight flush at index 1					 - Straight flush at index 1
  - The most of a kind is 2 of a kind (at index 0 / value A)	 - The most of a kind is 2 of a kind (at index 0 / value A)
  - Secondary pair at index 2 (value K)				 - Secondary pair at index 2 (value K)
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
  - 5 cards used for hand: As Ks Qs Js 0s 			 - 5 cards used for hand: As Ks Qs Js 0s 
 Hand 2:								Hand 2:
 --------							--------
