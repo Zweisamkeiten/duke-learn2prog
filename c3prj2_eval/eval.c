@@ -117,13 +117,13 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
+  qsort(hand1->cards, 5, sizeof(const card_t *), card_ptr_comp);
+  qsort(hand2->cards, 5, sizeof(const card_t *), card_ptr_comp);
   hand_eval_t hand1_eval = evaluate_hand(hand1);
   hand_eval_t hand2_eval = evaluate_hand(hand2);
   int compare_rank = (int)hand2_eval.ranking - (int)hand1_eval.ranking;
   if (compare_rank != 0) return compare_rank;
 
-  qsort(hand1_eval.cards, 5, sizeof(const card_t *), card_ptr_comp);
-  qsort(hand2_eval.cards, 5, sizeof(const card_t *), card_ptr_comp);
   int value_compare = 0;
   for (int i = 0; i < 5; ++i) {
     if (hand1_eval.cards[i]->value != hand2_eval.cards[i]->value) {
