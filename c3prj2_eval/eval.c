@@ -122,9 +122,9 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   if (compare_rank != 0) return compare_rank;
 
   int value_compare = 0;
-  for (int i = 0; i < hand1->n_cards; ++i) {
-    if ((*(hand1->cards + i))->value != (*(hand2->cards + i))->value) {
-      value_compare = (*(hand1->cards + i))->value - (*(hand2->cards + i))->value;
+  for (int i = 0; i < 5; ++i) {
+    if (hand1_eval.cards[i]->value != hand2_eval.cards[i]->value) {
+      value_compare = hand1_eval.cards[i]->value - hand2_eval.cards[i]->value;
       break;
     }
   }
