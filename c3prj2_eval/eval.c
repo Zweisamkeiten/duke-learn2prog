@@ -118,7 +118,17 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   hand_eval_t hand1_eval = evaluate_hand(hand1);
   hand_eval_t hand2_eval = evaluate_hand(hand2);
-  return (int)hand2_eval.ranking - (int)hand1_eval.ranking;
+  int compare_rank = (int)hand2_eval.ranking - (int)hand1_eval.ranking;
+  if (compare_rank != 0) return compare_rank;
+
+  int value_compare = 0;
+  for (int i = 0; i < hand1->n_cards; ++i) {
+    if ((*(hand1->cards + i))->value != (*(hand2->cards + i))->value) {
+      value_compare = (*(hand1->cards + i))->value - (*(hand2->cards + i))->value;
+      break;
+    }
+  }
+  return value_compare;
 }
 
 
