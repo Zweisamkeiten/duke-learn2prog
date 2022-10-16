@@ -42,5 +42,9 @@ int main(int argc, char *argv[])
     int alphalist[ALPHA_LIST_LENGTH] = {0};
     int key = breaker(fp, alphalist);
     printf("%d\n", key);
-    return 0;
+    if (fclose(f) != 0) {
+      perror("Failed to close the input file!");
+      return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
 }
