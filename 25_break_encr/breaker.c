@@ -25,7 +25,8 @@ int breaker(FILE * fp, int * alphalist) {
         }
     }
     int largest_index = find_the_largest_item_index(alphalist, ALPHA_LIST_LENGTH);
-    int key = (largest_index + 22) % 26;
+    // abs('e' - 'a' - largest_index) wrong 因为当找到的最频繁字母索引如果小于e, 例如是c, 它是加密前的字母加key超过26取余获得的
+    int key = (largest_index + 26 - ('e' - 'a')) % 26;
     return key;
 }
 
