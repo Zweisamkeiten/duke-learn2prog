@@ -25,7 +25,7 @@ int breaker(FILE * fp, int * alphalist) {
         }
     }
     int largest_index = find_the_largest_item_index(alphalist, ALPHA_LIST_LENGTH);
-    int key = abs('e' - 'a' - largest_index);
+    int key = (largest_index + 22) % 26;
     return key;
 }
 
