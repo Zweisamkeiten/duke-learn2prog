@@ -1,7 +1,7 @@
-Grading at Sun 16 Oct 2022 03:47:44 PM UTC
+Grading at Sun 16 Oct 2022 03:50:41 PM UTC
 Attempting to compile breaker.c 
 gcc -o breaker -pedantic -std=gnu99 -Wall -Werror breaker.c
-valgrind reported memory errors
+testcase1 passed
 #################################################
 testcase2:
 testcase2 passed
@@ -12,4 +12,4 @@ testcase3 passed
 testcase4:
 testcase4 passed
 
-Overall Grade: C
+Overall Grade: A
