@@ -1,53 +1,10 @@
-Grading at Mon 17 Oct 2022 08:46:00 AM UTC
+Grading at Mon 17 Oct 2022 09:27:45 AM UTC
 Attempting to compile rotateMatrix.c
-testcase1 passed
-#################################################
-testcase2: NonExistentFile
- (should indicate an error)
-testcase2 passed
-#################################################
-testcase3: blank.txt
- (should indicate an error)
-testcase3 failed, your program didn't indicate this is a failure case
-#################################################
-testcase4: short-line.txt
- (should indicate an error)
-testcase4 passed
-#################################################
-testcase5: short-file.txt
- (should indicate an error)
-testcase5 failed, your program didn't indicate this is a failure case
-#################################################
-testcase6: long-line.txt
- (should indicate an error)
-testcase6 passed
-#################################################
-testcase7: long-file.txt
- (should indicate an error)
-testcase7 failed, your program didn't indicate this is a failure case
-#################################################
-testcase8: long-line-2.txt
- (should indicate an error)
-testcase8 failed, your program didn't indicate this is a failure case
-#################################################
-testcase9: normal1.txt normal2.txt
- (should indicate an error)
-testcase9 passed
-#################################################
-testcase10: normal1.txt
-Your file matched the expected output
-testcase10 passed
-#################################################
-testcase10: normal2.txt
-Your file matched the expected output
-testcase10 passed
-#################################################
-testcase10: normal3.txt
-Your file matched the expected output
-testcase10 passed
-#################################################
-testcase10: eof.txt
-Your file matched the expected output
-testcase10 passed
+rotateMatrix.c: In function ‘main’:
+rotateMatrix.c:51:7: error: unused variable ‘c’ [-Werror=unused-variable]
+   51 |   int c;
+      |       ^
+cc1: all warnings being treated as errors
+The code did not compile!
 
 Overall Grade: F
