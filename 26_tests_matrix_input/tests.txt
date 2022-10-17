@@ -1,0 +1,8 @@
+
+noexistfile
+noexistfile wrongargu
+tests/sample.txt
+tests/0
+tests/1
+tests/2
+tests/3
