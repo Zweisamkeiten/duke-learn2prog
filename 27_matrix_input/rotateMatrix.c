@@ -48,7 +48,6 @@ int main(int argc, char *argv[]) {
   }
 
   char matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
-  int c;
   char line[LINE_SIZE];
   int index = 0;
   char *newline;
