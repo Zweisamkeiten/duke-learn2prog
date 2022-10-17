@@ -51,7 +51,12 @@ int main(int argc, char *argv[]) {
   char line[LINE_SIZE];
   int index = 0;
   char *newline;
-  while (fgets(line, LINE_SIZE, fp) != NULL) {
+  do {
+    char *read = fgets(line, LINE_SIZE, fp);
+    if (read == NULL) {
+      fprintf(stderr, "Invalid input: line is too short\n");
+      exit(EXIT_FAILURE);
+    }
     if ((newline = strchr(line, '\n')) != NULL) {
       if (newline - line == 10) {
         for (int i = 0; i < MATRIX_SIZE; ++i) {
@@ -75,7 +80,7 @@ int main(int argc, char *argv[]) {
       fprintf(stderr, "Invalid input: Line is too long\n");
       exit(EXIT_FAILURE);
     }
-  }
+  } while (1);
   rotate(matrix);
   for (int i = 0; i < MATRIX_SIZE; ++i) {
     for (int j = 0; j < MATRIX_SIZE; ++j) {
