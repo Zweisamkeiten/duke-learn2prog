@@ -37,17 +37,18 @@ void rotate(char matrix[10][10]) {
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
-    fprintf(stderr, "Usage: read-matrix input");
+    fprintf(stderr, "Usage: read-matrix input\n");
     exit(EXIT_FAILURE);
   }
 
   FILE *fp = fopen(argv[1], "r");
   if (fp == NULL) {
-    fprintf(stderr, "Could not open %s", argv[1]);
+    fprintf(stderr, "Could not open %s\n", argv[1]);
     exit(EXIT_FAILURE);
   }
 
   char matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
+  int c;
   char line[LINE_SIZE];
   int index = 0;
   char *newline;
@@ -62,18 +63,18 @@ int main(int argc, char *argv[]) {
       }
       if (index == MATRIX_SIZE * MATRIX_SIZE) {
         fprintf(stderr,
-                "Invalid input: file is too long (read %d instead of EOF)",
+                "Invalid input: file is too long (read %d instead of EOF)\n",
                 line[0]);
         exit(EXIT_FAILURE);
       }
 
       if (newline - line < 10) {
-        fprintf(stderr, "Invalid input: line is too short");
-        exit(EXIT_FAILURE);
-      } else if (newline - line > 10) {
-        fprintf(stderr, "Invalid input: line is too long");
+        fprintf(stderr, "Invalid input: Line is too short\n");
         exit(EXIT_FAILURE);
       }
+    } else {
+      fprintf(stderr, "Invalid input: Line is too long\n");
+      exit(EXIT_FAILURE);
     }
   }
   rotate(matrix);
