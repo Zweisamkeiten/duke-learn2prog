@@ -18,7 +18,10 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
     }
     while (getline(&curr, &sz, fp) >= 0) {
         names = realloc(names, (length + 1) * sizeof(char *));
-        names[length] = curr;
+        // '\n' 的长度代替 '\0'
+        names[length] = calloc(1, sizeof(char) * (strlen(curr)));
+        strncpy(names[length], curr, strlen(curr) - 1);
+        free(curr);
         curr = NULL;
         length++;
     }
@@ -31,8 +34,7 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
     int foundFlag = 0;
     for (int i = 0; i < length; ++i) {
         for (int j = 0; j < kvPairs->length; ++j) {
-            // strlen(names[i]) - 1 becasue it is '\n' after getline
-            if (strncmp(names[i], kvPairs->kvarray[j]->key, strlen(names[i]) - 1) == 0) {
+            if (strcmp(names[i], kvPairs->kvarray[j]->key) == 0) {
                 foundFlag = 1;
                 addCount(c, kvPairs->kvarray[j]->value);
             }
@@ -41,6 +43,7 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
             addCount(c, NULL);
         }
         foundFlag = 0;
+        free(names[i]);
     }
     free(names);
     return c;
