@@ -33,10 +33,15 @@ void addCount(counts_t * c, const char * name) {
     c->size = c->size + 1;
 }
 void printCounts(counts_t * c, FILE * outFile) {
+    int unknownIndex = -1;
     for (int i = 0; i < c->size; ++i) {
-        if (strcmp(c->counts[i]->info, "<unknown>") != 0) {
+        // or for always false to make this un-zero unknown line print last;
+        if (strcmp(c->counts[i]->info, "<unknown>") != 0 || ((unknownIndex = i) && 0)) {
             fprintf(outFile, "%s: %d\n", c->counts[i]->info, c->counts[i]->counts);
         }
+    }
+    if (unknownIndex != -1) {
+        fprintf(outFile, "%s : %d\n", c->counts[unknownIndex]->info, c->counts[unknownIndex]->counts);
     }
 }
 
