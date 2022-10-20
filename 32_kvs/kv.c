@@ -7,18 +7,20 @@
  * split to kv and store to kv pair
  */
 kvpair_t * splitToKV(char * line) {
-    kvpair_t * kvp= malloc(sizeof(char *) * 2);
+    kvpair_t * kvp = malloc(sizeof(char *) * 2);
+    kvp->key = NULL;
+    kvp->value = NULL;
     // locate the first '='
     char * equalIndex = strchr(line, '=');
     // copy the key
     // equalIndix - line + 1, plus 1 for the '\0'
-    kvp->key = malloc(sizeof(char) * (equalIndex - line + 1));
+    kvp->key = calloc(1, sizeof(char) * (equalIndex - line + 1));
     strncpy(kvp->key, line, equalIndex - line);
     // copy the value
     // plus 1 for '\0'
     // locate the first '\n'
     char * slashNIndex = strchr(line, '\n');
-    kvp->value = malloc(sizeof(char) * (strlen(equalIndex + 1) + 1));
+    kvp->value = calloc(1, sizeof(char) * (strlen(equalIndex + 1) + 1));
     strncpy(kvp->value, equalIndex + 1, slashNIndex - equalIndex - 1);
     return kvp;
 }
@@ -31,7 +33,6 @@ void readAndSplitToKV(kvarray_t * kvarr, FILE * fp) {
     while (getline(&curr, &sz, fp) >= 0) {
         kvarr->kvarray = realloc(kvarr->kvarray, (kvarr->length + 1) * sizeof(kvpair_t *));
         kvarr->kvarray[kvarr->length] = splitToKV(curr);
-        curr = NULL;
         kvarr->length = kvarr->length + 1;
     }
     free(curr);
@@ -41,21 +42,27 @@ void readAndSplitToKV(kvarray_t * kvarr, FILE * fp) {
  * read the key/value pairs from a file
  */
 kvarray_t * readKVs(const char * fname) {
-    kvarray_t * kvarr = (kvarray_t *)malloc(sizeof(kvarray_t));
-
-    // open the file
+    kvarray_t * kvarr = calloc(1, sizeof(kvarray_t));
+    kvarr->length = 0;
+// open the file
     FILE *fp = fopen(fname, "r");
     if (fp == NULL) {
         perror("Could not open the file");
         exit(EXIT_FAILURE);
     }
     readAndSplitToKV(kvarr, fp);
+    if (fclose(fp) != 0) {
+        perror("Failed to close the input file!");
+        exit(EXIT_FAILURE);
+    }
 
     return kvarr;
 }
 
 void freeKVs(kvarray_t * pairs) {
     for (int i = 0; i < pairs->length; ++i) {
+        free(pairs->kvarray[i]->key);
+        free(pairs->kvarray[i]->value);
         free(pairs->kvarray[i]);
     }
     free(pairs->kvarray);
