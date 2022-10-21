@@ -1,0 +1,14 @@
+0c 0s 8s 7d 6d 6s 5c; Js 0s 8s 7d 6s 5c 4c
+0c 0s 8s 7d 6d 5c 6c; Js 0s 8s 7d 6s 5c 4c
+0c 0s 8s 7d 6d 5c 6c; 4s 0s 8s 7d 6s 5c Js
+0c 0s 8s 7d 6d 5c 6c; 4s 0s 8s 7d 6s 5c Js
+0c 0s 8s 7d 6d 5c 6c; 8s 0s 0c 7d 6d 6s 5c
+0c 0s 0d 7d 6d 5c 6c; 8s 0s 0c 7d 6d 6s 5c
+0c 2c 3c 4c 5c 6c 7c; 0c 2c 3c 4c 5c 6c 7c
+0c 2c 3c 4c 5c 6c 7c; 0c Jc Qc Kc 9c 8c 7c
+Ah Qh 9h 7h 2h 3h 8h; Ac Qc 0c 6c 4c 3c 8c
+Kc Ks Kh 0c 0s 2c 3c; 9h 9d 9s Js Jd 2c 3c
+0s 0c 0h 0d Qd 2c 3c; 0s 0c 0h 0d 7s 2c 3c
+Ks Qs Js 0s 9s 2c 3c; 5s 4s 3s 2s As 2c 3c
+Qd Jd 0d 9s 9h 8h 8c; Qd Jd 0d 9s 9h 8c 8s
+Qd 9s 9h 8h 6s 2h 2c; Qd Jd 0d 9s 9h 8c 8s
