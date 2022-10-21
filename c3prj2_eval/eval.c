@@ -1,5 +1,6 @@
 // clang-format off
 #include "eval.h"
+#include "deck.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -141,7 +142,29 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
 //implementation in eval-c4.o) so that the
 //other functions we have provided can make
 //use of get_match_counts.
-unsigned * get_match_counts(deck_t * hand) ;
+unsigned * get_match_counts(deck_t * hand) {
+    unsigned * arr = malloc(sizeof(unsigned) * hand->n_cards);
+    qsort(hand->cards, hand->n_cards, sizeof(const card_t *), card_ptr_comp);
+    for (size_t i = 0, counts = 1, index = 0; i < hand->n_cards - 1; ++i) {
+        if (hand->cards[i]->value == hand->cards[i+1]->value) {
+            counts++;
+        }
+        else {
+            for (int j = index; j <= i; ++j) {
+                arr[j] = counts;
+            }
+            index = i + 1;
+            counts = 1;
+        }
+
+        if (i == hand->n_cards - 2) {
+            for (int j = index; j < hand->n_cards; ++j) {
+                arr[j] = counts;
+            }
+        }
+    }
+    return arr;
+}
 
 // We provide the below functions.  You do NOT need to modify them
 // In fact, you should not modify them!
