@@ -94,11 +94,21 @@ int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
 }
 
 int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
-  if ((*(hand->cards+index))->value == VALUE_ACE) {
-    if(is_n_length_straight_at(hand, index, fs, 5)) return 1;
-    else return is_ace_low_straight_at(hand, index, fs, 5);
+  if (((hand->n_cards) - index) < 5) return 0;
+  if (fs == NUM_SUITS) {
+    if ((*(hand->cards+index))->value == VALUE_ACE) {
+      if(is_n_length_straight_at(hand, index, fs, 5)) return 1;
+      else return is_ace_low_straight_at(hand, index, fs, 5);
+    }
+    else return is_n_length_straight_at(hand, index, fs, 5);
   }
-  else return is_n_length_straight_at(hand, index, fs, 5);
+  else {
+    if ((*(hand->cards+index))->suit == fs && (*(hand->cards+index))->value == VALUE_ACE) {
+      if(is_n_length_straight_at(hand, index, fs, 5)) return 1;
+      else return is_ace_low_straight_at(hand, index, fs, 5);
+    }
+    else return is_n_length_straight_at(hand, index, fs, 5);
+  }
 }
 
 hand_eval_t build_hand_from_match(deck_t * hand,
