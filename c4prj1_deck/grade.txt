@@ -1,27 +1,25 @@
-Grading at Sat 22 Oct 2022 02:09:52 AM UTC
+Grading at Sat 22 Oct 2022 02:13:16 AM UTC
 Compiling deck.c -> deck.o
 Compiling eval.c -> eval.o
-eval.c: In function ‘get_match_counts’:
-eval.c:182:1: error: ISO C forbids nested functions [-Werror=pedantic]
-  182 | void copy_straight(card_t ** to, deck_t *from, size_t ind, suit_t fs, size_t count) {
-      | ^~~~
-eval.c:207:1: error: ISO C forbids nested functions [-Werror=pedantic]
-  207 | int find_straight(deck_t * hand, suit_t fs, hand_eval_t * ans) {
-      | ^~~
-eval.c:239:1: error: ISO C forbids nested functions [-Werror=pedantic]
-  239 | hand_eval_t evaluate_hand(deck_t * hand) {
-      | ^~~~~~~~~~~
-eval.c:305:1: error: expected declaration or statement at end of input
-  305 | }
-      | ^
-eval.c:306: error: control reaches end of non-void function [-Werror=return-type]
-  306 | // clang-format on
-      | 
-At top level:
-eval.c:239:13: error: ‘evaluate_hand’ defined but not used [-Werror=unused-function]
-  239 | hand_eval_t evaluate_hand(deck_t * hand) {
-      |             ^~~~~~~~~~~~~
-cc1: all warnings being treated as errors
-Compilation of eval.c failed
+Compiling cards.c -> cards.o
+Linking eval.o, deck.o, cards.o, and our tester
+Testing free_deck(deck_t *)
+- Test passed
+Testing add_card_to(deck_t *, card_t)
+- Test passed
+Testing add_empty_card(deck_t *)
+- Test passed
+Testing make_deck_exclude(deck_t *)
+- Test passed
+Testing build_remaining_deck(deck_t **, size_t)
+Testing with 1 hand
+Testing with 2 hands
+Testing with 3 hands
+Testing with 4 hands
+Testing with 5 hands
+Testing with 6 hands
+- Test passed
+Testing get_match_count(deck_t *)
+- Test passed
 
-Overall Grade: F
+Overall Grade: A
