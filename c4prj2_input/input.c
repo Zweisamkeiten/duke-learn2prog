@@ -14,6 +14,10 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc) {
     char * index = NULL;
     const char * curr = str;
     while ((index=strchr(curr, ' ')) != NULL || (index=strchr(curr, '\n')) != NULL) {
+	if (index - curr < 2) {
+	    // it maybe an empty line
+	    break;
+	}
         // get the card str
         // +1 for '\0'
         char * card_str = calloc(1, index - curr + 1);
