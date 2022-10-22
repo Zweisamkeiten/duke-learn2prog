@@ -16,14 +16,14 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc) {
     while ((index=strchr(curr, ' ')) != NULL || (index=strchr(curr, '\n')) != NULL) {
         // get the card str
         // +1 for '\0'
-        char * card_str = malloc(index - curr + 1);
+        char * card_str = calloc(1, index - curr + 1);
         strncpy(card_str, curr, index - curr);
         curr = index + 1;
 
         // letter to card
         if (card_str[0] == '?') {
             card_t * empty = add_empty_card(d);
-            size_t index_future = card_str[1] - '0';
+            size_t index_future = atoi(card_str + 1);
             add_future_card(fc, index_future, empty);
         }
         else {
