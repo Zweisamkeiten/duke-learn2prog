@@ -45,7 +45,7 @@ void add_card_to(deck_t * deck, card_t c) {
 card_t * add_empty_card(deck_t * deck) {
     card_t empty = {.value = 0, .suit=0};
     add_card_to(deck, empty);
-    return deck->cards[deck->n_cards];
+    return deck->cards[deck->n_cards - 1];
 }
 
 deck_t * make_deck_exclude(deck_t * excluded_cards) {
