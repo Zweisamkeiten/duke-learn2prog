@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = /git-remote/learn2prog
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = myorig
+	merge = refs/heads/master
+[remote "myorig"]
+	url = git@github.com:Zweisamkeiten/duke-learn2prog.git
+	fetch = +refs/heads/*:refs/remotes/myorig/*
