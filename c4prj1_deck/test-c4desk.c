@@ -1,5 +1,6 @@
 #include "cards.h"
 #include "deck.h"
+#include "eval.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,10 +34,22 @@ int main(int argc, char *argv[]) {
   size_t n_hands = 2;
   hands[0] = d1;
   hands[1] = d2;
+  print_hand(d1);
+  printf("\n");
+  print_hand(d2);
+  printf("\n");
   deck_t *d3 = build_remaining_deck(hands, n_hands);
   print_hand(d3);
   assert(!deck_contains(d3, test));
   printf("\n");
+
+  unsigned *counts = get_match_counts(d3);
+  for (int i = 0; i < d3->n_cards; ++i) {
+    printf("%d ", counts[i]);
+  }
+  printf("\n");
+
+  free(counts);
   free(hands);
   free_deck(d1);
   free_deck(d2);

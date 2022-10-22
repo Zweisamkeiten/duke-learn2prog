@@ -146,27 +146,28 @@ unsigned * get_match_counts(deck_t * hand) {
     unsigned * arr = calloc(1, sizeof(unsigned) * hand->n_cards);
     qsort(hand->cards, hand->n_cards, sizeof(const card_t *), card_ptr_comp);
     if (hand->n_cards == 1) {
-       arr[0] = 1;
+        arr[0] = 1;
     }
-		else {
-			for (size_t i = 0, counts = 1, index = 0; i < hand->n_cards - 1; ++i) {
-				if (hand->cards[i]->value == hand->cards[i+1]->value) {
-					counts++;
-				}
-				else {
-					for (int j = index; j <= i; ++j) {
-						arr[j] = counts;
-					}
-					index = i + 1;
-					counts = 1;
-				}
+    else {
+        for (size_t i = 0, counts = 1, index = 0; i < hand->n_cards - 1; ++i) {
+            if (hand->cards[i]->value == hand->cards[i+1]->value) {
+                counts++;
+            }
+            else {
+                for (int j = index; j <= i; ++j) {
+                    arr[j] = counts;
+                }
+                index = i + 1;
+                counts = 1;
+            }
 
-				if (i == hand->n_cards - 2) {
-					for (int j = index; j < hand->n_cards; ++j) {
-						arr[j] = counts;
-					}
-				}
-			}
+            if (i == hand->n_cards - 2) {
+                for (int j = index; j < hand->n_cards; ++j) {
+                    arr[j] = counts;
+                }
+            }
+        }
+    }
     return arr;
 }
 
