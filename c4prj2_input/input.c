@@ -54,6 +54,7 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc) {
         line = NULL;
         *n_hands = *n_hands + 1;
     }
+    free(line);
 
     return ds;
 }

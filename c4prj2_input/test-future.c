@@ -22,6 +22,8 @@ int main() {
   }
 
   deck_t *d1 = malloc(sizeof(deck_t));
+  d1->n_cards = 0;
+  d1->cards = NULL;
   card_t c1 = {.value = VALUE_ACE, .suit = SPADES};
   card_t c2 = {.value = VALUE_KING, .suit = HEARTS};
   card_t c3 = {.value = 8, .suit = CLUBS};
@@ -32,5 +34,14 @@ int main() {
   add_card_to(d1, c4);
 
   future_cards_from_deck(d1, fc);
+
+  free_deck(d);
+  free_deck(d1);
+
+  for (size_t i = 0; i < fc->n_decks; ++i) {
+    free(fc->decks[i].cards);
+  }
+  free(fc->decks);
+  free(fc);
   return 0;
 }
